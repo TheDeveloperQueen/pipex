@@ -1,0 +1,86 @@
+args.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  15, col:  12):	space before function name
+Error: MIXED_SPACE_TAB      (line:  17, col:   8):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  17, col:   8):	Found space when expecting tab
+Error: RETURN_PARENTHESIS   (line:  28, col:  16):	Return value must be in parenthesis
+Error: RETURN_PARENTHESIS   (line:  31, col:  16):	Return value must be in parenthesis
+Error: SPACE_EMPTY_LINE     (line:  38, col:   1):	Space on empty line
+Error: NEWLINE_PRECEDES_FUNC (line:  43, col:   1):	Functions must be separated by a newline
+Error: SPACE_BEFORE_FUNC    (line:  43, col:   5):	space before function name
+Error: MIXED_SPACE_TAB      (line:  46, col:   9):	Mixed spaces and tabs
+Error: SPACE_REPLACE_TAB    (line:  46, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  47, col:   9):	Misaligned variable declaration
+Error: RETURN_PARENTHESIS   (line:  63, col:  12):	Return value must be in parenthesis
+aux.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  18, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  18, col:  10):	Misaligned variable declaration
+Error: SPACE_REPLACE_TAB    (line:  19, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  19, col:  10):	Misaligned variable declaration
+Error: SPC_BEFORE_NL        (line:  19, col:  18):	Space before newline
+Error: SPACE_EMPTY_LINE     (line:  20, col:   1):	Space on empty line
+Error: SPACE_REPLACE_TAB    (line:  34, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  34, col:  10):	Misaligned variable declaration
+Error: SPACE_REPLACE_TAB    (line:  35, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  35, col:  10):	Misaligned variable declaration
+Error: SPACE_EMPTY_LINE     (line:  36, col:   1):	Space on empty line
+Error: SPACE_EMPTY_LINE     (line:  53, col:   1):	Space on empty line
+exec.c: OK!
+main.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  17, col:   8):	Found space when expecting tab
+Error: NL_AFTER_VAR_DECL    (line:  19, col:   1):	Variable declarations must be followed by a newline
+Error: EMPTY_LINE_FUNCTION  (line:  20, col:   1):	Empty line in function
+Error: SPACE_EMPTY_LINE     (line:  20, col:   1):	Space on empty line
+Error: CONSECUTIVE_NEWLINES (line:  21, col:   1):	Consecutive newlines
+Error: EMPTY_LINE_FUNCTION  (line:  21, col:   1):	Empty line in function
+Error: SPACE_EMPTY_LINE     (line:  21, col:   1):	Space on empty line
+Error: BRACE_SHOULD_EOL     (line:  28, col:   1):	Expected newline after brace
+pipex.h: OK!
+libft/array_len.c: OK!
+libft/aux_printf.c: OK!
+libft/ft_atoi.c: OK!
+libft/ft_bzero.c: OK!
+libft/ft_calloc.c: OK!
+libft/ft_isalnum.c: OK!
+libft/ft_isalpha.c: OK!
+libft/ft_isascii.c: OK!
+libft/ft_isdigit.c: OK!
+libft/ft_isprint.c: OK!
+libft/ft_itoa.c: OK!
+libft/ft_line_count.c: OK!
+libft/ft_line_length.c: OK!
+libft/ft_lstadd_back.c: OK!
+libft/ft_lstadd_front.c: OK!
+libft/ft_lstclear.c: OK!
+libft/ft_lstdelone.c: OK!
+libft/ft_lstnew.c: OK!
+libft/ft_lstsize.c: OK!
+libft/ft_memchr.c: OK!
+libft/ft_memcmp.c: OK!
+libft/ft_memcpy.c: OK!
+libft/ft_memmove.c: OK!
+libft/ft_memset.c: OK!
+libft/ft_printf.c: OK!
+libft/ft_putchar_fd.c: OK!
+libft/ft_putendl_fd.c: OK!
+libft/ft_putnbr_fd.c: OK!
+libft/ft_putstr_fd.c: OK!
+libft/ft_split.c: OK!
+libft/ft_strchr.c: OK!
+libft/ft_strdup.c: OK!
+libft/ft_strict_atoi.c: OK!
+libft/ft_striteri.c: OK!
+libft/ft_strjoin.c: OK!
+libft/ft_strlcat.c: OK!
+libft/ft_strlcpy.c: OK!
+libft/ft_strlen.c: OK!
+libft/ft_strmapi.c: OK!
+libft/ft_strncmp.c: OK!
+libft/ft_strnstr.c: OK!
+libft/ft_strrchr.c: OK!
+libft/ft_substr.c: OK!
+libft/ft_swap.c: OK!
+libft/ft_tolower.c: OK!
+libft/ft_toupper.c: OK!
+libft/get_next_line.c: OK!
+libft/is_numeric.c: OK!
+libft/libft.h: OK!

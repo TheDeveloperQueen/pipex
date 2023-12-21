@@ -1,0 +1,13 @@
+Makefile
+args.c
+args.o
+aux.c
+aux.o
+infile
+libft
+main.c
+main.o
+outfile
+pipex
+pipex.h
+tester

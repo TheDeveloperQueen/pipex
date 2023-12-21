@@ -6,63 +6,84 @@
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:10:55 by rivasque          #+#    #+#             */
-/*   Updated: 2023/12/18 13:17:51 by rivasque         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:20:34 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	child_process1(int fd, char *cmd)
+static int	open_file(char *file, int mode)
 {
-	int	files[2];
+	int	fd;
+
+	if (mode == 0)
+		fd = open(file, O_RDONLY);
+	if (mode == 1)
+		fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (fd < 0)
+		exit(EXIT_FAILURE);
+	return (fd);
+}
+
+static void	child_process1(int	*files, char **argv, char **env)
+{
 	char *path;
-	char **args; 
-	char *env;
+	char **comds;
+	int	infile;
 	
-	dup2(fd, STDIN_FILENO);
-	dup2(files[1], STDOUT_FILENO);
+	infile = open_file(argv[1], 0);
 	close(files[0]);
-	close(fd);
-	execve(path, args[2], env);
-}
-
-void	child_process2(int fd, char *cmd)
-{
-	int	files[2];
-	char *path;
-	char **args; 
-	char *env;
-	
-	dup2(fd, STDOUT_FILENO);
-	dup2(files[0], STDIN_FILENO);
+	comds = cmds(argv[2]);
+	path = paths(env, comds[0]);
+	dup2(infile, STDIN_FILENO);
+	close(infile);
+	dup2(files[1], STDOUT_FILENO);
 	close(files[1]);
-	close(fd);
-	execve(path, args[3], env);
+	execve(path, comds, env);
+	perror(comds[0]);
+	exit(EXIT_FAILURE);
 }
 
-void	pipex(int fd1, int fd2)
+static void	child_process2(int *files, char **argv, char **env)
+{
+	char *path;
+	char **comds;
+	int outfile;
+	
+	outfile = open_file(argv[4], 1);
+	close(files[1]);
+	comds = cmds(argv[3]);
+	path = paths(env, comds[0]);
+	dup2(outfile, STDOUT_FILENO);
+	close(outfile);
+	dup2(files[0], STDIN_FILENO);
+	close(files[0]);
+	execve(path, comds, env);
+	perror(comds[0]);
+	exit(EXIT_FAILURE);
+}
+
+void	pipex(char **argv, char **env)
 {
 	int		files[2];
-	pid_t	pid[2];
-	char cmd1;
-	char cmd2;
+	pid_t	child1;
+	pid_t	child2;
+	int		status;
 	
 	pipe(files);
-	pid[0] = fork();
-	if (pid[0] < 0)
-	{
-		return (1);
+	child1 = fork();
+	if (child1 < 0)
 		exit(EXIT_FAILURE);
-	}
-	if (pid[0] == 0)
-		child_process1(fd1, cmd1);
-	pid[1] = fork();
-	if (pid[1] < 0)
-	{
-		return (1);
+	if (child1 == 0)
+		child_process1(files, argv, env);
+	child2 = fork();
+	if (child2 < 0)
 		exit(EXIT_FAILURE);
-	}
-	if (pid[1] == 0)
-		child_process2(fd2, cmd2);
-	//wait();
+	if (child2 == 0)
+		child_process2(files, argv, env);
+	close(files[0]);
+	close(files[1]);
+	waitpid(child1, NULL, 0);
+	waitpid(child2, &status, 0);
+	exit(status);
 }

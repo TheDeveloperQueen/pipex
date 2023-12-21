@@ -6,8 +6,6 @@ LIBFT=./libft/libft.a
 SRC=	main.c \
 		args.c \
 		aux.c \
-		exec.c
-
 
 OBJ=$(SRC:.c=.o)
 
@@ -25,7 +23,7 @@ clean:
 	@rm -f $(OBJ)
 
 fclean: clean
-	@make clean -C ./libft
+	@make fclean -C ./libft
 	@rm -f $(NAME)
 
 re: fclean all
