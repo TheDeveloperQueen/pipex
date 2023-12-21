@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:33:55 by rivasque          #+#    #+#             */
-/*   Updated: 2023/12/21 15:14:26 by rivasque         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:51:56 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static char **find_path(char **env)
 	char	**paths;
 
 	i = 0;
+	if (!*env)
+		perror("error");
 	while (env[i] != NULL)
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
