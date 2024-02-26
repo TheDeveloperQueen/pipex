@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:10:55 by rivasque          #+#    #+#             */
-/*   Updated: 2023/12/21 15:20:34 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:57:12 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,18 @@ static int	open_file(char *file, int mode)
 	if (mode == 1)
 		fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fd < 0)
+	{
+		perror(NULL);
 		exit(EXIT_FAILURE);
+	}
 	return (fd);
 }
 
 static void	child_process1(int	*files, char **argv, char **env)
 {
-	char *path;
-	char **comds;
-	int	infile;
+	char	*path;
+	char	**comds;
+	int		infile;
 	
 	infile = open_file(argv[1], 0);
 	close(files[0]);
@@ -46,10 +49,10 @@ static void	child_process1(int	*files, char **argv, char **env)
 
 static void	child_process2(int *files, char **argv, char **env)
 {
-	char *path;
-	char **comds;
-	int outfile;
-	
+	char	*path;
+	char	**comds;
+	int		outfile;
+
 	outfile = open_file(argv[4], 1);
 	close(files[1]);
 	comds = cmds(argv[3]);
@@ -69,7 +72,7 @@ void	pipex(char **argv, char **env)
 	pid_t	child1;
 	pid_t	child2;
 	int		status;
-	
+
 	pipe(files);
 	child1 = fork();
 	if (child1 < 0)
@@ -85,5 +88,5 @@ void	pipex(char **argv, char **env)
 	close(files[1]);
 	waitpid(child1, NULL, 0);
 	waitpid(child2, &status, 0);
-	exit(status);
+	exit(WEXITSTATUS(status));
 }
