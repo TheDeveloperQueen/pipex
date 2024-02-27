@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:10:55 by rivasque          #+#    #+#             */
-/*   Updated: 2024/02/26 14:57:12 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:45:43 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	open_file(char *file, int mode)
 	return (fd);
 }
 
-static void	child_process1(int	*files, char **argv, char **env)
+static void	child_process1(int *files, char **argv, char **env)
 {
 	char	*path;
 	char	**comds;

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 14:46:01 by rivasque          #+#    #+#             */
-/*   Updated: 2024/02/27 15:27:45 by rivasque         ###   ########.fr       */
+/*   Created: 2024/02/27 10:54:34 by rivasque          #+#    #+#             */
+/*   Updated: 2024/02/27 15:45:36 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
-int	main(int argc, char **argv, char **env)
-{
-	if (argc >= 5)
-	{
-		pipex_b(argc, argv, env);
-	}
-	ft_printf("Error\n");
-	return (0);
-}
+# include "libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+
+char	**cmds_b(char *argv);
+char	*paths_b(char **env, char *cmd);
+void	pipex_b(int argc, char **argv, char **env);
+int		n_cmds(int argc, char **argv);
+void	ft_wait(pid_t child_last);
+
+#endif
