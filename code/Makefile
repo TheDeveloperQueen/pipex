@@ -12,7 +12,8 @@ OBJ=$(SRC:.c=.o)
 
 SRC_BONUS=	main_bonus.c \
 			args_bonus.c \
-			aux_bonus.c
+			aux_bonus.c \
+			here_doc_bonus.c
 
 OBJ_BONUS=$(SRC_BONUS:.c=.o)
 

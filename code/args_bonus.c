@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:45:50 by rivasque          #+#    #+#             */
-/*   Updated: 2024/02/27 16:03:11 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:33:51 by ritavasques      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ char	**cmds_b(char *argv)
 	array_cmds = ft_split(argv, ' ');
 	return (array_cmds);
 }
-
+//PQ CON ! SI QUEREMOS QUE SEA IGUAL
 int	n_cmds(int argc, char **argv)
 {
-	if (!ft_strncmp(argv[1], "here_doc", 8) && ft_strlen(argv[1]) == 8)
+	if ((ft_strncmp(argv[1], "here_doc", 8) == 0) && ft_strlen(argv[1]) == 8)
 		return (argc - 4);
 	else
 		return (argc - 3);

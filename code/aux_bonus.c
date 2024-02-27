@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aux_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:56:23 by rivasque          #+#    #+#             */
-/*   Updated: 2024/02/27 15:58:28 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:07:54 by ritavasques      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,20 @@ static int	open_file(char *file, int mode)
 	return (fd);
 }
 
+
+//NOT TAKING INTO ACCOUT HERE_DOC (cmds_b(ARGV[2]))
 static int	child_process_1st(char **argv, char **env)
 {
 	char	*path;
 	char	**comds;
 	int		infile;
-	int		tub[2];
+	int		use_pipe[2];
 	pid_t	child;
 		
-	comds = cmds_b(*argv);
+	comds = cmds_b(argv[2]);
 	path = paths_b(env, comds[0]);
-	pipe(tub);
-		child = fork();
+	pipe(use_pipe);
+	child = fork();
 	if (child < 0)
 		exit(EXIT_FAILURE);
 	if (child == 0)
@@ -47,41 +49,41 @@ static int	child_process_1st(char **argv, char **env)
 		infile = open_file(argv[1], 0);
 		dup2(infile, STDIN_FILENO);
 		close(infile);
-		dup2(tub[1], STDOUT_FILENO);
-		close(tub[1]);
+		dup2(use_pipe[1], STDOUT_FILENO);
+		close(use_pipe[1]);
 		execve(path, comds, env);
 		perror(comds[0]);
 		exit(EXIT_FAILURE);
 	}
-	return(close(tub[1]), tub[0]);
+	return(close(use_pipe[1]), use_pipe[0]);
 }
 
 static int	child_process_middle(int pipe_a, char **argv, char **env)
 {
 	char	*path;
 	char	**comds;
-	int		tub[2];
+	int		use_pipe[2];
 	pid_t	child;
 		
 	comds = cmds_b(*argv);
 	path = paths_b(env, comds[0]);
-	pipe(tub);
-		child = fork();
+	pipe(use_pipe);
+	child = fork();
 	if (child < 0)
 		exit(EXIT_FAILURE);
 	if (child == 0)
 	{
 		dup2(pipe_a, STDIN_FILENO);
 		close(pipe_a);
-		dup2(tub[1], STDOUT_FILENO);
-		close(tub[1]);
+		dup2(use_pipe[1], STDOUT_FILENO);
+		close(use_pipe[1]);
 		execve(path, comds, env);
 		perror(comds[0]);
 		exit(EXIT_FAILURE);
 	}
-	close(tub[1]);
+	close(use_pipe[1]);
 	close(pipe_a);
-	return(tub[0]);
+	return(use_pipe[0]);
 }
 
 static pid_t	child_process_last(int argc, int pipe_a, char **argv, char **env)
@@ -109,7 +111,7 @@ static pid_t	child_process_last(int argc, int pipe_a, char **argv, char **env)
 	}
 	return (child_last);
 }
-
+//NOT TAKING INTO ACCOUT HERE_DOC (i = 3)
 void	pipex_b(int argc, char **argv, char **env)
 {
 	int		i;
