@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:55:17 by rivasque          #+#    #+#             */
-/*   Updated: 2023/10/16 14:03:29 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:32:23 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*ft_print(char **add_read)
 {
 	char		*line;
 
-	if (ft_strchr(*add_read, '\n'))
+	if (ft_strchr_int(*add_read, '\n'))
 	{
 		line = ft_str_cut(*add_read);
 		*add_read = ft_str_left(*add_read);
@@ -100,13 +100,13 @@ char	*get_next_line(int fd)
 	if (!str_buff)
 		return (NULL);
 	str_buff[0] = '\0';
-	while (!ft_strchr(str_buff, '\n'))
+	while (!ft_strchr_int(str_buff, '\n'))
 	{
 		bytesread = read(fd, str_buff, BUFFER_SIZE);
 		str_buff[bytesread] = '\0';
 		if (bytesread == 0)
 			break ;
-		add_read = ft_strjoin(add_read, str_buff);
+		add_read = ft_strjoin_buff(add_read, str_buff);
 	}
 	free(str_buff);
 	return (ft_print(&add_read));

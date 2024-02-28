@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:40:12 by rivasque          #+#    #+#             */
-/*   Updated: 2023/12/13 17:41:11 by ritavasques      ###   ########.fr       */
+/*   Updated: 2024/02/28 14:36:01 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_swap(int	*a, int	*b);
 int		is_numeric(char *str);
+char	*ft_strcpy(char *dest, char *src);
+int		ft_strcmp(char *s1, char *s2);
+int		ft_strchr_int(char *str, int c);
+char	*ft_strjoin_buff(char *add_read, char *str_buff);
 
 #endif

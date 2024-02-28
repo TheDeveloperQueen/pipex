@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:54:34 by rivasque          #+#    #+#             */
-/*   Updated: 2024/02/27 15:45:36 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:05:52 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ char	*paths_b(char **env, char *cmd);
 void	pipex_b(int argc, char **argv, char **env);
 int		n_cmds(int argc, char **argv);
 void	ft_wait(pid_t child_last);
+char    *here_doc(char *delimiter);
 
 #endif

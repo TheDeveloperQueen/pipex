@@ -48,7 +48,11 @@ FUNCTIONS=	ft_isalpha.c \
 			ft_lstclear.c \
 			ft_strict_atoi.c \
 			ft_swap.c \
-			is_numeric.c
+			is_numeric.c \
+			ft_strcpy.c \
+			ft_strcmp.c \
+			ft_strchr_int.c \
+			ft_strjoin_gnl.c
 			
 OBJ= $(FUNCTIONS:%.c=%.o)
 

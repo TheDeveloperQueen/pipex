@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aux_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:56:23 by rivasque          #+#    #+#             */
-/*   Updated: 2024/02/27 18:07:54 by ritavasques      ###   ########.fr       */
+/*   Updated: 2024/02/28 15:40:56 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	child_process_1st(char **argv, char **env)
 	int		infile;
 	int		use_pipe[2];
 	pid_t	child;
-		
+	
 	comds = cmds_b(argv[2]);
 	path = paths_b(env, comds[0]);
 	pipe(use_pipe);
@@ -120,9 +120,14 @@ void	pipex_b(int argc, char **argv, char **env)
 	pid_t	last_child;
 	
 	i = 3;
+	if ((ft_strncmp(argv[1], "here_doc", 8) == 0) && ft_strlen(argv[1]) == 8)
+	{
+		argv++;
+		argv[1] = here_doc(argv[1]);
+	}
 	n_comds = n_cmds(argc, argv);
 	pipe_a = child_process_1st(argv, env);
-	while (i < n_comds)
+	while (i <= n_comds)
 	{
 		pipe_a = child_process_middle(pipe_a, &argv[i], env);
 		i++;

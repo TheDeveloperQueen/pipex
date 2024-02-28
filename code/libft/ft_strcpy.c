@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 10:37:32 by rivasque          #+#    #+#             */
-/*   Updated: 2024/02/28 12:57:52 by rivasque         ###   ########.fr       */
+/*   Created: 2024/02/28 11:57:43 by rivasque          #+#    #+#             */
+/*   Updated: 2024/02/28 12:01:16 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *str)
+char	*ft_strcpy(char *dest, char *src)
 {
-	int		i;
-	char	*dest;
+	int	i;
 
 	i = 0;
-	if (!str)
-		return (NULL);
-	dest = (char *) malloc((ft_strlen(str) + 1) * sizeof(char));
-	if (dest == NULL)
-		return (0);
-	while (str[i] != '\0')
+	while (src[i])
 	{
-		dest[i] = str[i];
+		dest[i] = src[i];
 		i++;
 	}
 	dest[i] = '\0';
