@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aux_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ritavasques <ritavasques@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:56:23 by rivasque          #+#    #+#             */
-/*   Updated: 2024/02/28 15:40:56 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:00:14 by ritavasques      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static int	open_file(char *file, int mode)
 	return (fd);
 }
 
-
-//NOT TAKING INTO ACCOUT HERE_DOC (cmds_b(ARGV[2]))
 static int	child_process_1st(char **argv, char **env)
 {
 	char	*path;
@@ -111,7 +109,7 @@ static pid_t	child_process_last(int argc, int pipe_a, char **argv, char **env)
 	}
 	return (child_last);
 }
-//NOT TAKING INTO ACCOUT HERE_DOC (i = 3)
+
 void	pipex_b(int argc, char **argv, char **env)
 {
 	int		i;
@@ -124,6 +122,10 @@ void	pipex_b(int argc, char **argv, char **env)
 	{
 		argv++;
 		argv[1] = here_doc(argv[1]);
+		printf("argv[1]: %s\n", argv[1]);
+		printf("argv[2]: %s\n", argv[2]);
+		printf("argv[3]: %s\n", argv[3]);
+		printf("argv[4]: %s\n", argv[4]);
 	}
 	n_comds = n_cmds(argc, argv);
 	pipe_a = child_process_1st(argv, env);
