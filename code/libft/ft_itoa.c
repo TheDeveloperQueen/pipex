@@ -6,13 +6,11 @@
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 12:25:32 by rivasque          #+#    #+#             */
-/*   Updated: 2023/09/18 14:43:52 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:24:51 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-#include <stdio.h>
 
 static int	ft_countn(long n)
 {

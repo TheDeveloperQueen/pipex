@@ -6,7 +6,7 @@
 /*   By: rivasque <rivasque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:10:55 by rivasque          #+#    #+#             */
-/*   Updated: 2024/02/27 14:45:43 by rivasque         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:38:38 by rivasque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	child_process1(int *files, char **argv, char **env)
 	char	*path;
 	char	**comds;
 	int		infile;
-	
+
 	infile = open_file(argv[1], 0);
 	close(files[0]);
 	comds = cmds(argv[2]);
